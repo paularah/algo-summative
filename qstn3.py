@@ -5,7 +5,7 @@ def encryptMessage(message, key):
         rowIndex = i % key
         encryptionMatrix[rowIndex][colIndex] = message[i]
     encryptedMessage = ""
-    print(encryptionMatrix)
+
     for x in range(0, len(encryptionMatrix)):
         for y in range(0, len(encryptionMatrix[0])):
             if encryptionMatrix[x][y] != "":
