@@ -1,14 +1,38 @@
-def getSuperDigit(n, k):
-    def superDigit(digit):
-        while len(str(digit)) != 1:
-            strDigit = str(digit)
-            nextDigit = 0
-            for char in strDigit:
-                nextDigit += int(char)
-            digit = nextDigit
-        return digit
-    result = superDigit(int(n * k))
-    return result
+def encryptMessage(message, key):
+    encryptionMatrix = [["" for _ in range(len(message))] for _ in range(key)]
+    for i in range(0, len(message)):
+        colIndex = i
+        rowIndex = i % key
+        encryptionMatrix[rowIndex][colIndex] = message[i]
+    encryptedMessage = ""
+    print(encryptionMatrix)
+    for x in range(0, len(encryptionMatrix)):
+        for y in range(0, len(encryptionMatrix[0])):
+            if encryptionMatrix[x][y] != "":
+                encryptedMessage += encryptionMatrix[x][y]
+    return encryptedMessage
 
 
-print(getSuperDigit('148', 3))
+def decryptMessage(message, key):
+    decryptionMatrix = [["" for _ in range(len(message))] for _ in range(key)]
+    counter = 0
+    colIndex = 0
+    rowIndex = 0
+    while counter < len(message):
+        if colIndex >= len(message):
+            colIndex = rowIndex + 1
+            rowIndex += 1
+        decryptionMatrix[rowIndex][colIndex] = message[counter]
+        counter += 1
+        colIndex += key
+
+    decrypted_string = ''
+    for i in range(0, len(decryptionMatrix[0])):
+        colIndex = i
+        rowIndex = i % key
+
+        decrypted_string += decryptionMatrix[rowIndex][colIndex]
+    return decrypted_string
+
+
+print(decryptMessage(encryptMessage("plain text", 2), 2))
