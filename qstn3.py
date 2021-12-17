@@ -26,13 +26,13 @@ def decryptMessage(message, key):
         counter += 1
         colIndex += key
 
-    decrypted_string = ''
+    decryptedMessage = ''
     for i in range(0, len(decryptionMatrix[0])):
         colIndex = i
         rowIndex = i % key
 
-        decrypted_string += decryptionMatrix[rowIndex][colIndex]
-    return decrypted_string
+        decryptedMessage += decryptionMatrix[rowIndex][colIndex]
+    return decryptedMessage
 
 
 print(decryptMessage(encryptMessage("plain text", 2), 2))
