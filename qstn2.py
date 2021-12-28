@@ -1,5 +1,9 @@
 def gradeStudent(grades):
     """
+    seperaing the algorithm for rounding a student grades into a seperate 
+    function then calls the algorithm on the arrya of grdades returning 
+    a new array of the rounded grades.
+    Big O -> O(n)
     """
     def roundingAlgo(grade):
         if grade < 38:
