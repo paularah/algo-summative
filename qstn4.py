@@ -1,4 +1,9 @@
 def getSuperDigit(n, k):
+    """
+    Iteratively calls the algorith for calulTting the super on n repated k times
+    untile the value is a single digit. Tis could also be done the recursive and the single
+    condition can be used as the base case.
+    """
     def superDigit(digit):
         while len(str(digit)) != 1:
             strDigit = str(digit)
